@@ -1,0 +1,26 @@
+/* app-root {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: auto 4rem;
+    grid-template-areas: 'side main' 'footer footer';
+} */
+
+
+.container {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: auto 4rem;
+    grid-template-areas: 'side main' 'footer footer';
+}
+
+router-outlet {
+    grid-area: main;
+}
+
+app-footer {
+    grid-area: footer;
+}
