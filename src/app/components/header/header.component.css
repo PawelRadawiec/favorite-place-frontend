@@ -2,8 +2,34 @@
     position: fixed;
     top: 0;
     left: 0;
-    background: black;
+    background: #3333ff;
     color: white;
     height: 50px;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.2rem;
+}
+
+.header__main {
+    display: flex;
+    align-items: center;
+}
+
+.header__title {
+    margin-top: 0.5rem;
+}
+
+.header__image {
+    margin-left: 0.5rem;
+}
+
+.header__nav {
+    margin-right: 0.5rem;
+}
+
+.header__nav__items {
+    display: flex;
+    list-style: none;
 }
