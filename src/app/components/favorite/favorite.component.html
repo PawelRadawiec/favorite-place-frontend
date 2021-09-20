@@ -1,6 +1,13 @@
 <div class="content">
     <div>Your favorite pleaces</div>
     <div class="content__system-map">
-        <google-map [height]="height" [width]="width"></google-map>
+        <google-map [height]="height" [width]="width" (mapClick)="click($event)" [center]="center">
+            <map-marker #markerElem *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label"
+                [title]="marker.title" [options]="marker.options" (mapClick)="openInfo(markerElem, marker.info)">
+            </map-marker>
+        </google-map>
+    </div>
+    <div>
+        <button (click)="addMarker()">Add marker</button>
     </div>
 </div>
