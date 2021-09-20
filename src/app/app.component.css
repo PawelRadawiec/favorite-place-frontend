@@ -1,24 +1,17 @@
-/* app-root {
-    display: grid;
-    height: 100%;
-    width: 100%;
-    grid-template-columns: 1fr 5fr;
-    grid-template-rows: auto 4rem;
-    grid-template-areas: 'side main' 'footer footer';
-} */
-
-
 .container {
     display: grid;
     height: 100%;
-    width: 100%;
-    grid-template-columns: 1fr 5fr;
-    grid-template-rows: auto 4rem;
-    grid-template-areas: 'side main' 'footer footer';
+    grid-template-columns: auto;
+    grid-template-rows: 4rem auto 4rem;
+    grid-template-areas: 'header' 'main' 'footer';
 }
 
-router-outlet {
+.container__content {
     grid-area: main;
+}
+
+app-header {
+    grid-area: header;
 }
 
 app-footer {
