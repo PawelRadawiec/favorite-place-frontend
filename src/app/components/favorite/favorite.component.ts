@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
+import { TabelButtonType } from 'src/app/models/table-button.model';
 
 @Component({
   selector: 'app-favorite',
@@ -22,6 +23,17 @@ export class FavoriteComponent implements OnInit, OnDestroy {
 
   testFields = [
     'lat', 'lng', 'label', 'title', 'info'
+  ]
+
+  buttonsTest = [
+    {
+      type: TabelButtonType.INFO,
+      label: 'Delete'
+    },
+    {
+      type: TabelButtonType.INFO,
+      label: 'Info'
+    }
   ]
 
   constructor(private breakpointObserver: BreakpointObserver) { }
@@ -64,7 +76,13 @@ export class FavoriteComponent implements OnInit, OnDestroy {
     })
   }
 
+  // todo - delete
   click(event) {
+    console.log('event: ', event);
+  }
+
+  // todo - delete
+  listButtonClicked(event) {
     console.log('event: ', event);
   }
 

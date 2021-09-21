@@ -1,6 +1,6 @@
 .system-table {
-    /* border: 1px solid black; */
     border-collapse: collapse;
+    width: 200px;
 }
 
 .system-table__tr {
@@ -8,17 +8,17 @@
     border-width: 1px 0;
 }
 
-.system-table__td {
-    /* border: 1px solid black; */
-    /* border-bottom: 1px solid #535353; */
-    /* border-right: 1px solid black; */
-}
-
 .system-table__th__column {
-    margin: 5px;
+    margin: 2px;
     color: #949494;
 }
 
 .system-table__th__cell {
-    margin: 5px;
+    margin: 2px;
+}
+
+@media(min-width: 40rem) {
+    .system-table {
+        width: 700px;
+    }
 }

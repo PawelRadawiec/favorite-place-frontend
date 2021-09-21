@@ -10,5 +10,7 @@
     <div>
         <app-button [label]="'Add marker'" (onClick)="addMarker()"></app-button>
     </div>
-    <app-favorite-list [data]="markersWrapper" [fieldsName]="testFields" [columns]="testColumns"></app-favorite-list>
+    <app-favorite-list [buttons]="buttonsTest" [data]="markersWrapper" [fieldsName]="testFields"
+        [columns]="testColumns" (buttonClicked)="listButtonClicked($event)">
+    </app-favorite-list>
 </div>
