@@ -1,5 +1,4 @@
 <div class="content">
-    <div>Your favorite pleaces</div>
     <div class="content__system-map">
         <google-map [height]="height" [width]="width" (mapClick)="click($event)" [center]="center">
             <map-marker #markerElem *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label"
@@ -7,10 +6,9 @@
             </map-marker>
         </google-map>
     </div>
-    <div>
-        <app-button [label]="'Add marker'" (onClick)="addMarker()"></app-button>
+    <div class="favorite-list">
+        <app-favorite-list [buttons]="buttonsTest" [data]="markersWrapper" [fieldsName]="testFields"
+            [columns]="testColumns" (buttonClicked)="listButtonClicked($event)">
+        </app-favorite-list>
     </div>
-    <app-favorite-list [buttons]="buttonsTest" [data]="markersWrapper" [fieldsName]="testFields"
-        [columns]="testColumns" (buttonClicked)="listButtonClicked($event)">
-    </app-favorite-list>
 </div>

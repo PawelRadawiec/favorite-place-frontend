@@ -18,7 +18,7 @@ export class FavoriteComponent implements OnInit, OnDestroy {
   private subscription = new Subscription();
 
   testColumns = [
-    'X', 'Y', 'label', 'title', 'info'
+    'X', 'Y', 'Label', 'Title', 'Info'
   ];
 
   testFields = [
@@ -27,10 +27,12 @@ export class FavoriteComponent implements OnInit, OnDestroy {
 
   buttonsTest = [
     {
+      code: 'DELETE',
       type: TabelButtonType.INFO,
       label: 'Delete'
     },
     {
+      code: 'INFO',
       type: TabelButtonType.INFO,
       label: 'Info'
     }
@@ -51,39 +53,37 @@ export class FavoriteComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  addMarker() {
-    this.markersWrapper.push({
-      lat: this.center.lat + ((Math.random() - 0.5) * 2) / 30,
-      lng: this.center.lng + ((Math.random() - 0.5) * 2) / 30,
-      label: 'Label test' + (this.markers.length + 1),
-      title: 'Title test' + (this.markers.length + 1),
-      info: 'Marker info test ' + (this.markers.length + 1),
-    });
+  click(event: google.maps.MapMouseEvent) {
+    const lat = event?.latLng?.lat();
+    const lng = event?.latLng?.lng();
+    const label = 'Label test' + (this.markers.length + 1);
+    const title = 'Title test' + (this.markers.length + 1);
+    const info = 'Marker info test ' + (this.markers.length + 1);
+    this.markersWrapper.push({ lat, lng, label, title, info });
     this.markers.push({
-      position: {
-        lat: this.center.lat + ((Math.random() - 0.5) * 2) / 30,
-        lng: this.center.lng + ((Math.random() - 0.5) * 2) / 30,
-      },
+      position: { lat, lng },
       label: {
         color: 'red',
-        text: 'Label test' + (this.markers.length + 1),
+        text: label,
       },
-      title: 'Title test' + (this.markers.length + 1),
-      info: 'Marker info test ' + (this.markers.length + 1),
+      title,
+      info,
       options: {
         animation: google.maps.Animation.BOUNCE,
       },
     })
   }
 
-  // todo - delete
-  click(event) {
-    console.log('event: ', event);
-  }
-
-  // todo - delete
+  // todo - add ngxs actions
   listButtonClicked(event) {
-    console.log('event: ', event);
+    switch (event.button.code) {
+      case 'INFO':
+        break;
+      case 'DELETE':
+        this.markers = this.markers.filter(marker => marker.position.lat !== event.value.lat && marker.position.lng !== event.value.lng);
+        this.markersWrapper = this.markersWrapper.filter(marker => marker !== event.value);
+        break;
+    }
   }
 
   setCenter() {
