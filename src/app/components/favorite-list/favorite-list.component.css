@@ -1,0 +1,24 @@
+.system-table {
+    border-collapse: collapse;
+    width: 200px;
+}
+
+.system-table__tr {
+    border-bottom: solid;
+    border-width: 1px 0;
+}
+
+.system-table__th__column {
+    margin: 2px;
+    color: #949494;
+}
+
+.system-table__th__cell {
+    margin: 2px;
+}
+
+@media(min-width: 40rem) {
+    .system-table {
+        width: 700px;
+    }
+}

@@ -9,7 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { FavoriteComponent } from './components/favorite/favorite.component';
-import { ButtonComponent } from './components/button/button.component'
+import { ButtonComponent } from './components/button/button.component';
+import { FavoriteListComponent } from './components/favorite-list/favorite-list.component'
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ButtonComponent } from './components/button/button.component'
     HeaderComponent,
     FooterComponent,
     FavoriteComponent,
-    ButtonComponent
+    ButtonComponent,
+    FavoriteListComponent
   ],
   imports: [
     BrowserModule,
