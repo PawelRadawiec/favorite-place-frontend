@@ -9,11 +9,20 @@ import { Subscription } from 'rxjs';
 })
 export class FavoriteComponent implements OnInit, OnDestroy {
   markers = [];
+  markersWrapper = [];
   width: string;
   height: string
   readonly maxWidth = '(max-width: 40rem)';
   center: google.maps.LatLngLiteral
   private subscription = new Subscription();
+
+  testColumns = [
+    'X', 'Y', 'label', 'title', 'info'
+  ];
+
+  testFields = [
+    'lat', 'lng', 'label', 'title', 'info'
+  ]
 
   constructor(private breakpointObserver: BreakpointObserver) { }
 
@@ -31,10 +40,17 @@ export class FavoriteComponent implements OnInit, OnDestroy {
   }
 
   addMarker() {
+    this.markersWrapper.push({
+      lat: this.center.lat + ((Math.random() - 0.5) * 2) / 30,
+      lng: this.center.lng + ((Math.random() - 0.5) * 2) / 30,
+      label: 'Label test' + (this.markers.length + 1),
+      title: 'Title test' + (this.markers.length + 1),
+      info: 'Marker info test ' + (this.markers.length + 1),
+    });
     this.markers.push({
       position: {
-        lat: this.center.lat + ((Math.random() - 0.5) * 2) / 10,
-        lng: this.center.lng + ((Math.random() - 0.5) * 2) / 10,
+        lat: this.center.lat + ((Math.random() - 0.5) * 2) / 30,
+        lng: this.center.lng + ((Math.random() - 0.5) * 2) / 30,
       },
       label: {
         color: 'red',

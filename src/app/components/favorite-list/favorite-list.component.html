@@ -1,0 +1,16 @@
+<table class="system-table">
+    <tr class="system-table__tr">
+        <th class="system-table__th" *ngFor="let column of columns">
+            <div class="system-table__th__column">
+                {{column}}
+            </div>
+        </th>
+    </tr>
+    <tr class="system-table__tr" *ngFor="let item of data">
+        <td class="system-table__td" *ngFor="let field of fieldsName">
+            <div class="system-table__th__cell">
+                {{item[field]}}
+            </div>
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,24 @@
+.system-table {
+    /* border: 1px solid black; */
+    border-collapse: collapse;
+}
+
+.system-table__tr {
+    border-bottom: solid;
+    border-width: 1px 0;
+}
+
+.system-table__td {
+    /* border: 1px solid black; */
+    /* border-bottom: 1px solid #535353; */
+    /* border-right: 1px solid black; */
+}
+
+.system-table__th__column {
+    margin: 5px;
+    color: #949494;
+}
+
+.system-table__th__cell {
+    margin: 5px;
+}
