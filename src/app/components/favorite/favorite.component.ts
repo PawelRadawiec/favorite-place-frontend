@@ -17,24 +17,26 @@ export class FavoriteComponent implements OnInit, OnDestroy {
   center: google.maps.LatLngLiteral
   private subscription = new Subscription();
 
-  testColumns = [
+  columns = [
     'X', 'Y', 'Label', 'Title', 'Info'
   ];
 
-  testFields = [
+  fields = [
     'lat', 'lng', 'label', 'title', 'info'
   ]
 
-  buttonsTest = [
-    {
-      code: 'DELETE',
-      type: TabelButtonType.INFO,
-      label: 'Delete'
-    },
+  rowButtons = [
     {
       code: 'INFO',
       type: TabelButtonType.INFO,
-      label: 'Info'
+      label: 'Info',
+      icon: 'open_in_new'
+    },
+    {
+      code: 'DELETE',
+      type: TabelButtonType.DANGER,
+      label: 'Delete',
+      icon: 'delete'
     }
   ]
 

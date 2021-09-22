@@ -1,9 +1,7 @@
 <table class="system-table">
     <tr class="system-table__tr">
         <th class="system-table__th" *ngFor="let column of columns">
-            <div class="system-table__th__column">
-                {{column}}
-            </div>
+            {{column}}
         </th>
     </tr>
     <tr class="system-table__tr" *ngFor="let item of data">
@@ -16,7 +14,7 @@
             </div>
         </td>
         <td class="system-table__td" *ngFor="let button of buttons">
-            <app-button [label]="button.label" (onClick)="buttonClick(button, item)"></app-button>
+            <app-button [label]="button.label" [type]="button.type" [icon]="button.icon" (onClick)="buttonClick(button, item)"></app-button>
         </td>
     </tr>
 </table>

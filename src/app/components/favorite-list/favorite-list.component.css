@@ -1,20 +1,12 @@
 .system-table {
-    border-collapse: collapse;
     width: 200px;
+    color: #818080;
+    font-size: 0.9rem;
+    border-collapse: collapse;
 }
 
-.system-table__tr {
-    border-bottom: solid;
-    border-width: 1px 0;
-}
-
-.system-table__th__column {
-    margin: 2px;
-    color: #949494;
-}
-
-.system-table__th__cell {
-    margin: 2px;
+.system-table__td {
+    border-bottom: solid 2px #c9c8c8;
 }
 
 @media(min-width: 40rem) {

@@ -15,3 +15,20 @@
     background-color: #7d7df8fb;
     cursor: pointer;
 }
+
+
+.button-info {
+    background: #3333ff;
+}
+
+.button-warn {
+    background: #bbcf00;
+}
+
+.button-danger {
+    background: #bd0000;
+}
+
+.button-icon:hover {
+    cursor: pointer;
+}
