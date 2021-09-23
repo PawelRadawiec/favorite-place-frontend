@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { TabelButtonType } from 'src/app/models/table-button.model';
+import { ButtonConfig, ButtonType, ColorButtonType } from 'src/app/models/button.config';
 
 @Component({
   selector: 'app-button',
@@ -7,9 +7,7 @@ import { TabelButtonType } from 'src/app/models/table-button.model';
   styleUrls: ['./button.component.css']
 })
 export class ButtonComponent implements OnInit {
-  @Input() label: string;
-  @Input() type: TabelButtonType;
-  @Input() icon: string;
+  @Input() config: ButtonConfig;
   @Output() onClick = new EventEmitter<any>();
 
   backgrund: string;
@@ -18,7 +16,7 @@ export class ButtonComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.isIcon = (this.icon && this.icon.length > 0);
+    this.isIcon = (this.config.type === ButtonType.ICON);
     if (!this.isIcon) {
       this.backgrund = this.getBackground();
     }
@@ -30,14 +28,14 @@ export class ButtonComponent implements OnInit {
 
   getBackground() {
     let background;
-    switch (this.type) {
-      case TabelButtonType.INFO:
+    switch (this.config.colorType) {
+      case ColorButtonType.INFO:
         background = 'button-info';
         break;
-      case TabelButtonType.WARN:
+      case ColorButtonType.WARN:
         background = 'button-warn';
         break;
-      case TabelButtonType.DANGER:
+      case ColorButtonType.DANGER:
         background = 'button-danger';
         break;
       default:

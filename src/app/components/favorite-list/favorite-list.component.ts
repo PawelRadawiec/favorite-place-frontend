@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { TableButton, TableButtonEmit } from 'src/app/models/table-button.model';
+import { ButtonConfig } from 'src/app/models/button.config';
 
 @Component({
   selector: 'app-favorite-list',
@@ -7,18 +7,18 @@ import { TableButton, TableButtonEmit } from 'src/app/models/table-button.model'
   styleUrls: ['./favorite-list.component.css']
 })
 export class FavoriteListComponent implements OnInit {
-  @Input() buttons: TableButton[] = [];
+  @Input() buttons: ButtonConfig[] = [];
   @Input() columns: string[] = [];
   @Input() data: any[] = []
   @Input() fieldsName: string[] = [];
-  @Output() buttonClicked = new EventEmitter<TableButtonEmit>();
+  @Output() buttonClicked = new EventEmitter<{ button: ButtonConfig, value: any }>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  buttonClick(button: TableButton, value: any) {
+  buttonClick(button: ButtonConfig, value: any) {
     this.buttonClicked.emit({ button, value });
   }
 

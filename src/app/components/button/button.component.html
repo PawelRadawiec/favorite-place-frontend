@@ -1,6 +1,6 @@
 <button *ngIf="!isIcon" class="button" [ngClass]="backgrund" (click)="onClickEvent($event)">
-    <div class="button__label">{{label}}</div>
+    <div class="button__label">{{config?.label}}</div>
 </button>
 <div *ngIf="isIcon">
-    <mat-icon class="button-icon" (click)="onClickEvent($event)" aria-hidden="false">{{icon}}</mat-icon>
+    <mat-icon class="button-icon" (click)="onClickEvent($event)" aria-hidden="false">{{config?.icon}}</mat-icon>
 </div>

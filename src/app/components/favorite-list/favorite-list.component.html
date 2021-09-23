@@ -14,7 +14,7 @@
             </div>
         </td>
         <td class="system-table__td" *ngFor="let button of buttons">
-            <app-button [label]="button.label" [type]="button.type" [icon]="button.icon" (onClick)="buttonClick(button, item)"></app-button>
+            <app-button [config]="button" (onClick)="buttonClick(button, item)"></app-button>
         </td>
     </tr>
 </table>

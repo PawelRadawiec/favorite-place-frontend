@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
-import { TabelButtonType } from 'src/app/models/table-button.model';
+import { ButtonConfig, ButtonType, ColorButtonType } from 'src/app/models/button.config';
 
 @Component({
   selector: 'app-favorite',
@@ -17,25 +17,21 @@ export class FavoriteComponent implements OnInit, OnDestroy {
   center: google.maps.LatLngLiteral
   private subscription = new Subscription();
 
-  columns = [
+  columns: string[] = [
     'X', 'Y', 'Label', 'Title', 'Info'
   ];
-
-  fields = [
+  fields: string[] = [
     'lat', 'lng', 'label', 'title', 'info'
   ]
-
-  rowButtons = [
+  rowButtons: ButtonConfig[] = [
     {
-      code: 'INFO',
-      type: TabelButtonType.INFO,
-      label: 'Info',
+      id: 'INFO',
+      type: ButtonType.ICON,
       icon: 'open_in_new'
     },
     {
-      code: 'DELETE',
-      type: TabelButtonType.DANGER,
-      label: 'Delete',
+      id: 'DELETE',
+      type: ButtonType.ICON,
       icon: 'delete'
     }
   ]
@@ -78,7 +74,7 @@ export class FavoriteComponent implements OnInit, OnDestroy {
 
   // todo - add ngxs actions
   listButtonClicked(event) {
-    switch (event.button.code) {
+    switch (event.button.id) {
       case 'INFO':
         break;
       case 'DELETE':
