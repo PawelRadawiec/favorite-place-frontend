@@ -11,6 +11,9 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { FavoriteComponent } from './components/favorite/favorite.component';
 import { ButtonComponent } from './components/button/button.component';
 import { FavoriteListComponent } from './components/favorite-list/favorite-list.component'
+import { FavoriteState } from './state/favorite.state';
+import { NgxsModule } from '@ngxs/store';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { FavoriteListComponent } from './components/favorite-list/favorite-list.
     BrowserAnimationsModule,
     MatIconModule,
     GoogleMapsModule,
+    NgxsModule.forRoot([FavoriteState], {
+      developmentMode: !environment.production
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

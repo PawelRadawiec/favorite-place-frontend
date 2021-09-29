@@ -17,13 +17,13 @@ export class FavoriteComponent implements OnInit, OnDestroy {
   center: google.maps.LatLngLiteral
   private subscription = new Subscription();
 
-  columns: string[] = [
+  readonly columns: string[] = [
     'X', 'Y', 'Label', 'Title', 'Info'
   ];
-  fields: string[] = [
+  readonly fields: string[] = [
     'lat', 'lng', 'label', 'title', 'info'
   ]
-  rowButtons: ButtonConfig[] = [
+  readonly rowButtons: ButtonConfig[] = [
     {
       id: 'INFO',
       type: ButtonType.ICON,
