@@ -88,15 +88,12 @@ export class FavoriteComponent implements OnInit, OnDestroy {
   // todo - add ngxs actions
   listButtonClicked(event) {
     const eventMarker = event.value;
-    const marker = this.markers.find(marker => marker.position.lat === eventMarker.lat && marker.position.lng === eventMarker.lng)
+    const markerId = this.markers.find(marker => marker.position.lat === eventMarker.lat && marker.position.lng === eventMarker.lng)?.id;
     switch (event.button.id) {
       case 'INFO':
         break;
       case 'DELETE':
-        // this.markers = this.markers.filter(marker => marker.position.lat !== event.value.lat && marker.position.lng !== event.value.lng);
-        // this.markersWrapper = this.markersWrapper.filter(marker => marker !== event.value);
-        console.log('value: ', marker);
-        this.store.dispatch(new FavoriteActions.Delete(marker.id));
+        this.store.dispatch(new FavoriteActions.Delete(markerId));
         break;
     }
   }
