@@ -2,6 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
 import { ButtonConfig, ButtonType, ColorButtonType } from 'src/app/models/button.config';
+import { Store } from '@ngxs/store';
+import { FavoriteActions } from 'src/app/state/favorite.actions';
+import { Favorite } from 'src/app/models/favorite.model';
+import { FavoriteSelectors } from 'src/app/state/favorite.selectors';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-favorite',
@@ -36,7 +41,10 @@ export class FavoriteComponent implements OnInit, OnDestroy {
     }
   ]
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private store: Store
+  ) { }
 
   ngOnInit() {
     this.setCenter();
@@ -44,6 +52,9 @@ export class FavoriteComponent implements OnInit, OnDestroy {
       this.breakpointObserver.observe([this.maxWidth]).subscribe(
         result => this.handleMaxWidthSubscribe(result?.matches)
       )
+    );
+    this.subscription.add(
+      this.store.select(FavoriteSelectors.favorites).subscribe(favorites => this.handleFavorites(favorites))
     )
   }
 
@@ -58,7 +69,7 @@ export class FavoriteComponent implements OnInit, OnDestroy {
     const title = 'Title test' + (this.markers.length + 1);
     const info = 'Marker info test ' + (this.markers.length + 1);
     this.markersWrapper.push({ lat, lng, label, title, info });
-    this.markers.push({
+    const marker: Favorite = {
       position: { lat, lng },
       label: {
         color: 'red',
@@ -69,7 +80,9 @@ export class FavoriteComponent implements OnInit, OnDestroy {
       options: {
         animation: google.maps.Animation.BOUNCE,
       },
-    })
+    }
+    this.markers.push(marker);
+    this.store.dispatch(new FavoriteActions.Create(marker));
   }
 
   // todo - add ngxs actions
@@ -96,6 +109,19 @@ export class FavoriteComponent implements OnInit, OnDestroy {
   private handleMaxWidthSubscribe(matches: boolean) {
     this.width = matches ? '300px' : '900px';
     this.height = matches ? '300px' : '500px';
+  }
+
+  handleFavorites(favorites: Favorite[]) {
+    this.markers = _.cloneDeep(favorites);
+    this.markersWrapper = this.markers.map(marker => {
+      return {
+        lat: marker.position?.lat, 
+        lng: marker.position?.lng, 
+        label: marker.label?.text, 
+        title: marker.title, 
+        info: marker.info
+      }
+    })
   }
 
 }

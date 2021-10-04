@@ -1,6 +1,6 @@
 
 export interface Favorite {
-    id: string;
+    id?: string;
     position: Position;
     label: Label;
     title: string;
@@ -19,5 +19,5 @@ export interface Label {
 }
 
 export interface FavoriteOptions {
-    animation: string;
+    animation: any;
 }

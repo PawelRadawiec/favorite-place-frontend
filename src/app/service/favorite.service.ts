@@ -6,7 +6,7 @@ import { Favorite } from '../models/favorite.model';
   providedIn: 'root'
 })
 export class FavoriteService {
-  private readonly url = 'localhost:8080/app/favorite';
+  private readonly url = 'http://localhost:8080/app/favorite';
 
   constructor(private http: HttpClient) { }
 
