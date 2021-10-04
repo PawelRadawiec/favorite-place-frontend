@@ -87,12 +87,16 @@ export class FavoriteComponent implements OnInit, OnDestroy {
 
   // todo - add ngxs actions
   listButtonClicked(event) {
+    const eventMarker = event.value;
+    const marker = this.markers.find(marker => marker.position.lat === eventMarker.lat && marker.position.lng === eventMarker.lng)
     switch (event.button.id) {
       case 'INFO':
         break;
       case 'DELETE':
-        this.markers = this.markers.filter(marker => marker.position.lat !== event.value.lat && marker.position.lng !== event.value.lng);
-        this.markersWrapper = this.markersWrapper.filter(marker => marker !== event.value);
+        // this.markers = this.markers.filter(marker => marker.position.lat !== event.value.lat && marker.position.lng !== event.value.lng);
+        // this.markersWrapper = this.markersWrapper.filter(marker => marker !== event.value);
+        console.log('value: ', marker);
+        this.store.dispatch(new FavoriteActions.Delete(marker.id));
         break;
     }
   }
@@ -115,10 +119,10 @@ export class FavoriteComponent implements OnInit, OnDestroy {
     this.markers = _.cloneDeep(favorites);
     this.markersWrapper = this.markers.map(marker => {
       return {
-        lat: marker.position?.lat, 
-        lng: marker.position?.lng, 
-        label: marker.label?.text, 
-        title: marker.title, 
+        lat: marker.position?.lat,
+        lng: marker.position?.lng,
+        label: marker.label?.text,
+        title: marker.title,
         info: marker.info
       }
     })

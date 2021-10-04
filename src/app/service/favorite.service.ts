@@ -15,11 +15,15 @@ export class FavoriteService {
   }
 
   getAll() {
-    return this.http.get<Favorite[]>(this.url);
+    return this.http.get<Favorite[]>(`${this.url}/search`);
   }
 
   getById(id: string) {
     return this.http.get<Favorite>(`${this.url}/${id}`);
+  }
+
+  delete(id: string) {
+    return this.http.delete<string>(`${this.url}/${id}`);
   }
 
 }

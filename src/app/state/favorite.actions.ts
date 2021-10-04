@@ -25,4 +25,11 @@ export namespace FavoriteActions {
         }
     }
 
+    export class Delete {
+        static readonly type = '[Favorite] Delete';
+        constructor(public id: string) {
+
+        }
+    }
+
 }

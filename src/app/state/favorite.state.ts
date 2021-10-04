@@ -27,6 +27,13 @@ export class FavoriteState {
         )
     }
 
+    @Action(FavoriteActions.Delete)
+    delete(context: StateContext<FavoriteStateModel>, action: FavoriteActions.Delete) {
+        return this.favoriteService.delete(action.id).pipe(
+            mergeMap(() => this.store.dispatch(new FavoriteActions.GetAll()))
+        )
+    }
+
     @Action(FavoriteActions.GetAll)
     getAll(context: StateContext<FavoriteStateModel>) {
         return this.favoriteService.getAll().pipe(
@@ -40,5 +47,6 @@ export class FavoriteState {
             favorites: action.favorites
         })
     }
+
 
 }
