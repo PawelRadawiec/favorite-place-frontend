@@ -22,15 +22,4 @@ export class FavoriteListComponent implements OnInit {
     this.buttonClicked.emit({ button, value });
   }
 
-  getFieldType(value: any) {
-    let type = null;
-    if (typeof value === 'number') {
-      type = 'number'
-    }
-    if (typeof value === 'string') {
-      type = 'string'
-    }
-    return type;
-  }
-
 }

@@ -6,10 +6,10 @@
     </tr>
     <tr class="system-table__tr" *ngFor="let item of data">
         <td class="system-table__td" *ngFor="let field of fieldsName">
-            <div *ngIf="getFieldType(item[field]) === 'string'" class="system-table__th__cell">
+            <div *ngIf="(item[field] | typeof) === 'string'" class="system-table__th__cell">
                 {{item[field]}}
             </div>
-            <div *ngIf="getFieldType(item[field]) === 'number'" class="system-table__th__cell">
+            <div *ngIf="(item[field] | typeof) === 'number'" class="system-table__th__cell">
                 {{item[field] | number: '1.4-4'}}...
             </div>
         </td>

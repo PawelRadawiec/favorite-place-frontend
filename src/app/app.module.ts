@@ -15,6 +15,7 @@ import { FavoriteState } from './state/favorite.state';
 import { NgxsModule } from '@ngxs/store';
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+import { TypeofPipe } from './pipes/typeof.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     FavoriteComponent,
     ButtonComponent,
-    FavoriteListComponent
+    FavoriteListComponent,
+    TypeofPipe
   ],
   imports: [
     BrowserModule,
