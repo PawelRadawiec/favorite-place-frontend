@@ -14,6 +14,7 @@ import { FavoriteListComponent } from './components/favorite-list/favorite-list.
 import { FavoriteState } from './state/favorite.state';
 import { NgxsModule } from '@ngxs/store';
 import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { environment } from 'src/environments/environment';
     BrowserAnimationsModule,
     MatIconModule,
     GoogleMapsModule,
+    HttpClientModule,
     NgxsModule.forRoot([FavoriteState], {
       developmentMode: !environment.production
     })

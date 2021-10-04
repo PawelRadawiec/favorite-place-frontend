@@ -3,12 +3,14 @@ import { FavoriteService } from "../service/favorite.service";
 import { defaultFavoriteStateModel, FavoriteStateModel } from "./favorite-state.model";
 import { FavoriteActions } from "./favorite.actions";
 import { mergeMap } from 'rxjs/operators'
+import { Injectable } from "@angular/core";
 
 
 @State<FavoriteStateModel>({
     name: 'favorite',
     defaults: defaultFavoriteStateModel
 })
+@Injectable()
 export class FavoriteState {
 
     constructor(
