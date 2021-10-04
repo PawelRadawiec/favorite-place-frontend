@@ -5,6 +5,10 @@
     border-collapse: collapse;
 }
 
+.system-table__tr {
+    text-align: left;
+}
+
 .system-table__td {
     border-bottom: solid 2px #c9c8c8;
 }
