@@ -1,20 +1,29 @@
 <table class="system-table">
-    <tr class="system-table__tr">
-        <th class="system-table__th" *ngFor="let column of columns">
-            {{column}}
-        </th>
-    </tr>
-    <tr class="system-table__tr" *ngFor="let item of data">
-        <td class="system-table__td" *ngFor="let field of fieldsName">
-            <div *ngIf="(item[field] | typeof) === 'string'" class="system-table__th__cell">
-                {{item[field]}}
-            </div>
-            <div *ngIf="(item[field] | typeof) === 'number'" class="system-table__th__cell">
-                {{item[field] | number: '1.4-4'}}...
-            </div>
-        </td>
-        <td class="system-table__td" *ngFor="let button of buttons">
-            <app-button [config]="button" (onClick)="buttonClick(button, item)"></app-button>
-        </td>
-    </tr>
+  <tr class="system-table__tr">
+    <th class="system-table__th" *ngFor="let column of columns">
+      {{ column }}
+    </th>
+  </tr>
+  <tr class="system-table__tr" *ngFor="let item of data">
+    <td class="system-table__td" *ngFor="let field of fieldsName">
+      <div
+        *ngIf="(item[field] | typeof) === 'string'"
+        class="system-table__th__cell"
+      >
+        {{ item[field] }}
+      </div>
+      <div
+        *ngIf="(item[field] | typeof) === 'number'"
+        class="system-table__th__cell"
+      >
+        {{ item[field] | number: "1.4-4" }}...
+      </div>
+    </td>
+    <td class="system-table__td" *ngFor="let button of buttons">
+      <app-button
+        [config]="button"
+        (onClick)="buttonClick(button, item)"
+      ></app-button>
+    </td>
+  </tr>
 </table>

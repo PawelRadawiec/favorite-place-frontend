@@ -1,10 +1,14 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ButtonConfig, ButtonType, ColorButtonType } from 'src/app/models/button.config';
+import {
+  ButtonConfig,
+  ButtonType,
+  ColorButtonType,
+} from 'src/app/models/button.config';
 
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.css']
+  styleUrls: ['./button.component.css'],
 })
 export class ButtonComponent implements OnInit {
   @Input() config: ButtonConfig;
@@ -13,17 +17,17 @@ export class ButtonComponent implements OnInit {
   backgrund: string;
   isIcon: boolean;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-    this.isIcon = (this.config.type === ButtonType.ICON);
+    this.isIcon = this.config.type === ButtonType.ICON;
     if (!this.isIcon) {
       this.backgrund = this.getBackground();
     }
   }
 
   onClickEvent(event) {
-    this.onClick.emit(event)
+    this.onClick.emit(event);
   }
 
   getBackground() {
@@ -43,5 +47,4 @@ export class ButtonComponent implements OnInit {
     }
     return background;
   }
-
 }

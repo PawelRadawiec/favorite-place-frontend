@@ -1,20 +1,20 @@
 .system-table {
-    width: 200px;
-    color: #818080;
-    font-size: 0.9rem;
-    border-collapse: collapse;
+  width: 200px;
+  color: #818080;
+  font-size: 0.9rem;
+  border-collapse: collapse;
 }
 
 .system-table__tr {
-    text-align: left;
+  text-align: left;
 }
 
 .system-table__td {
-    border-bottom: solid 2px #c9c8c8;
+  border-bottom: solid 2px #c9c8c8;
 }
 
-@media(min-width: 40rem) {
-    .system-table {
-        width: 700px;
-    }
+@media (min-width: 40rem) {
+  .system-table {
+    width: 700px;
+  }
 }

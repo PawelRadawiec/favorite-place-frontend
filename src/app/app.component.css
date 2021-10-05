@@ -1,19 +1,19 @@
 .container {
-    display: grid;
-    height: 100%;
-    grid-template-columns: auto;
-    grid-template-rows: 4rem auto 4rem;
-    grid-template-areas: 'header' 'main' 'footer';
+  display: grid;
+  height: 100%;
+  grid-template-columns: auto;
+  grid-template-rows: 4rem auto 4rem;
+  grid-template-areas: "header" "main" "footer";
 }
 
 .container__content {
-    grid-area: main;
+  grid-area: main;
 }
 
 app-header {
-    grid-area: header;
+  grid-area: header;
 }
 
 app-footer {
-    grid-area: footer;
+  grid-area: footer;
 }

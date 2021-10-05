@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 import { Favorite } from '../models/favorite.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FavoriteService {
   private readonly url = 'http://localhost:8080/app/favorite';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   create(favorite: Favorite) {
     return this.http.post<Favorite>(`${this.url}`, favorite);
@@ -25,5 +25,4 @@ export class FavoriteService {
   delete(id: string) {
     return this.http.delete<string>(`${this.url}/${id}`);
   }
-
 }

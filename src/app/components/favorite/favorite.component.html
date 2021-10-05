@@ -1,14 +1,30 @@
 <div class="content">
-    <div class="content__system-map">
-        <google-map [height]="height" [width]="width" (mapClick)="click($event)" [center]="center">
-            <map-marker #markerElem *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label"
-                [title]="marker.title" [options]="marker.options">
-            </map-marker>
-        </google-map>
-    </div>
-    <div class="favorite-list">
-        <app-favorite-list [buttons]="rowButtons" [data]="markersWrapper" [fieldsName]="fields"
-            [columns]="columns" (buttonClicked)="listButtonClicked($event)">
-        </app-favorite-list>
-    </div>
+  <div class="content__system-map">
+    <google-map
+      [height]="height"
+      [width]="width"
+      (mapClick)="click($event)"
+      [center]="center"
+    >
+      <map-marker
+        #markerElem
+        *ngFor="let marker of markers"
+        [position]="marker.position"
+        [label]="marker.label"
+        [title]="marker.title"
+        [options]="marker.options"
+      >
+      </map-marker>
+    </google-map>
+  </div>
+  <div class="favorite-list">
+    <app-favorite-list
+      [buttons]="rowButtons"
+      [data]="markersWrapper"
+      [fieldsName]="fields"
+      [columns]="columns"
+      (buttonClicked)="listButtonClicked($event)"
+    >
+    </app-favorite-list>
+  </div>
 </div>

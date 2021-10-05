@@ -7,13 +7,13 @@ const routes: Routes = [
   {
     path: 'app-favorite/favorite',
     resolve: [FavoriteListResolver],
-    component: FavoriteComponent
-  }
+    component: FavoriteComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   providers: [FavoriteListResolver],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

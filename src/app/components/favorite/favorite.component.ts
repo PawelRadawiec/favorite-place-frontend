@@ -1,7 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
-import { ButtonConfig, ButtonType, ColorButtonType } from 'src/app/models/button.config';
+import {
+  ButtonConfig,
+  ButtonType,
+  ColorButtonType,
+} from 'src/app/models/button.config';
 import { Store } from '@ngxs/store';
 import { FavoriteActions } from 'src/app/state/favorite.actions';
 import { Favorite } from 'src/app/models/favorite.model';
@@ -11,51 +15,49 @@ import * as _ from 'lodash';
 @Component({
   selector: 'app-favorite',
   templateUrl: './favorite.component.html',
-  styleUrls: ['./favorite.component.css']
+  styleUrls: ['./favorite.component.css'],
 })
 export class FavoriteComponent implements OnInit, OnDestroy {
   markers = [];
   markersWrapper = [];
   width: string;
-  height: string
+  height: string;
   readonly maxWidth = '(max-width: 40rem)';
-  center: google.maps.LatLngLiteral
+  center: google.maps.LatLngLiteral;
   private subscription = new Subscription();
 
-  readonly columns: string[] = [
-    'X', 'Y', 'Label', 'Title', 'Info'
-  ];
-  readonly fields: string[] = [
-    'lat', 'lng', 'label', 'title', 'info'
-  ]
+  readonly columns: string[] = ['X', 'Y', 'Label', 'Title', 'Info'];
+  readonly fields: string[] = ['lat', 'lng', 'label', 'title', 'info'];
   readonly rowButtons: ButtonConfig[] = [
     {
       id: 'INFO',
       type: ButtonType.ICON,
-      icon: 'open_in_new'
+      icon: 'open_in_new',
     },
     {
       id: 'DELETE',
       type: ButtonType.ICON,
-      icon: 'delete'
-    }
-  ]
+      icon: 'delete',
+    },
+  ];
 
   constructor(
     private breakpointObserver: BreakpointObserver,
     private store: Store
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.setCenter();
     this.subscription.add(
-      this.breakpointObserver.observe([this.maxWidth]).subscribe(
-        result => this.handleMaxWidthSubscribe(result?.matches)
-      )
+      this.breakpointObserver
+        .observe([this.maxWidth])
+        .subscribe((result) => this.handleMaxWidthSubscribe(result?.matches))
     );
     this.subscription.add(
-      this.store.select(FavoriteSelectors.favorites).subscribe(favorites => this.handleFavorites(favorites))
-    )
+      this.store
+        .select(FavoriteSelectors.favorites)
+        .subscribe((favorites) => this.handleFavorites(favorites))
+    );
   }
 
   ngOnDestroy() {
@@ -80,7 +82,7 @@ export class FavoriteComponent implements OnInit, OnDestroy {
       options: {
         animation: google.maps.Animation.BOUNCE,
       },
-    }
+    };
     this.markers.push(marker);
     this.store.dispatch(new FavoriteActions.Create(marker));
   }
@@ -88,7 +90,11 @@ export class FavoriteComponent implements OnInit, OnDestroy {
   // todo - add ngxs actions
   listButtonClicked(event) {
     const eventMarker = event.value;
-    const markerId = this.markers.find(marker => marker.position.lat === eventMarker.lat && marker.position.lng === eventMarker.lng)?.id;
+    const markerId = this.markers.find(
+      (marker) =>
+        marker.position.lat === eventMarker.lat &&
+        marker.position.lng === eventMarker.lng
+    )?.id;
     switch (event.button.id) {
       case 'INFO':
         break;
@@ -103,8 +109,8 @@ export class FavoriteComponent implements OnInit, OnDestroy {
       this.center = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
-      }
-    })
+      };
+    });
   }
 
   private handleMaxWidthSubscribe(matches: boolean) {
@@ -114,15 +120,15 @@ export class FavoriteComponent implements OnInit, OnDestroy {
 
   handleFavorites(favorites: Favorite[]) {
     this.markers = _.cloneDeep(favorites);
-    this.markersWrapper = this.markers.map(marker => {
+    // todo - remove after list component will handle neasted properties
+    this.markersWrapper = this.markers.map((marker) => {
       return {
         lat: marker.position?.lat,
         lng: marker.position?.lng,
         label: marker.label?.text,
         title: marker.title,
-        info: marker.info
-      }
-    })
+        info: marker.info,
+      };
+    });
   }
-
 }

@@ -10,7 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { FavoriteComponent } from './components/favorite/favorite.component';
 import { ButtonComponent } from './components/button/button.component';
-import { FavoriteListComponent } from './components/favorite-list/favorite-list.component'
+import { FavoriteListComponent } from './components/favorite-list/favorite-list.component';
 import { FavoriteState } from './state/favorite.state';
 import { NgxsModule } from '@ngxs/store';
 import { environment } from 'src/environments/environment';
@@ -25,7 +25,7 @@ import { TypeofPipe } from './pipes/typeof.pipe';
     FavoriteComponent,
     ButtonComponent,
     FavoriteListComponent,
-    TypeofPipe
+    TypeofPipe,
   ],
   imports: [
     BrowserModule,
@@ -35,10 +35,10 @@ import { TypeofPipe } from './pipes/typeof.pipe';
     GoogleMapsModule,
     HttpClientModule,
     NgxsModule.forRoot([FavoriteState], {
-      developmentMode: !environment.production
-    })
+      developmentMode: !environment.production,
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
